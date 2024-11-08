@@ -4,7 +4,11 @@ export default {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 
 	theme: {
-		extend: {}
+		extend: {
+			backgroundImage: {
+				'hero-pattern': "url('hero-pattern.svg')",
+			},
+		}
 	},
 
 	plugins: []

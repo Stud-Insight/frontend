@@ -1,5 +1,5 @@
 <script lang="ts">
-    interface Props {
+    interface LogoProps {
         width?: string;
         height?: string;
         primaryColor?: string;
@@ -18,7 +18,7 @@
         secondaryColor = defaultSecondaryColor,
         large = false,
         className
-    }: Props = $props();
+    }: LogoProps = $props();
 
     width = large ? '809' : '315';
     height = large ? '140' : '246';

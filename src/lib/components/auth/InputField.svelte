@@ -19,14 +19,15 @@
         iconSize = 20,
         iconColor = 'inherit'
     }: InputFieldProps = $props();
-
+    
+    let id = 'input-field-' + crypto.getRandomValues(new Uint32Array(1));
     let iconStyle: string = iconColor !== 'inherit' ? `color: ${iconColor};` : '';
     let showPassword: boolean = $state(false);
     let inputType = $derived(type === 'password' && showPassword ? 'text' : type);
 </script>
 
 <div class="text-gray mb-6">
-    <label class="text-smp mb-1 flex flex-row items-center space-x-2 font-bold" for="input-field">
+    <label class="text-smp mb-1 flex flex-row items-center space-x-2 font-bold" for={id}>
         {#if icon}
             <div style={iconStyle}>
                 <Icon {icon} font-size={iconSize} />
@@ -38,7 +39,7 @@
     <div class="relative w-full">
         <input
             class="bg-light-gray text-dark-gray w-full appearance-none rounded px-3 py-2 leading-tight shadow drop-shadow-sm focus:outline-none"
-            id="input-field"
+            id={id}
             type={inputType}
             {placeholder}
         />

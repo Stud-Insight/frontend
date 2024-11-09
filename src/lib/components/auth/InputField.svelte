@@ -60,12 +60,3 @@
         {/if}
     </div>
 </div>
-
-<style>
-    .relative {
-        position: relative;
-    }
-    .absolute {
-        position: absolute;
-    }
-</style>

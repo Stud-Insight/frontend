@@ -1,11 +1,23 @@
 <script lang="ts">
 	import InputField from './InputField.svelte';
     import SubmitButton from './SubmitButton.svelte';
+
+    let email = '';
+    let password = '';
+
+    const handleSubmit = () => {
+        if (!email || !password) return;
+        console.log('Email:', email);
+        console.log('Password', password);
+    };
 </script>
 
-<div>
-    <InputField label="E-Mail" type="text" icon="ic:round-mail" iconSize={18} />
-	<InputField label="Mot de passe" type="password" icon="fa-solid:lock" iconSize={16} />
+<form on:submit|preventDefault={handleSubmit} class="flex flex-col space-y-4 justify-center">
+    <div class="mb-6 flex flex-col space-y-4">
+        <InputField label="E-Mail" type="text" icon="ic:round-mail" iconSize={18} bind:value={email} />
+        <InputField label="Mot de passe" type="password" icon="fa-solid:lock" iconSize={16} bind:value={password} />
+        <a href="account-recovery" class="text-gray text-sm underline right-0 ml-auto">Mot de passe oublié ?</a>
+    </div>
     
     <SubmitButton type="default" />
 
@@ -17,4 +29,4 @@
     </div>
 
     <SubmitButton type="cas" />
-</div>
+</form>

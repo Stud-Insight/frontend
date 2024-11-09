@@ -6,13 +6,17 @@
 <div class="bg-hero-pattern bg-cover h-screen">
 
     <!-- Sidebar -->
-    <div class="fixed h-full w-[30%] right-0 bg-white">
-        <div class="flex flex-col justify-center items-center">
-            <Logo className="h-20" large />
+    <div class="fixed h-full w-[580px] right-0 bg-white">
+        <div class="flex flex-col h-full justify-center items-center">
 
-            <div class="w-[300px]">
-                <AuthForm />
+            <div class="flex h-[300px] justify-center items-center">
+                <Logo className="h-20 w-full" large />
             </div>
+
+            <div class="flex-1 w-[340px]">
+               <AuthForm />
+            </div>
+
         </div>
     </div>
 

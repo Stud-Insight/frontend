@@ -1,4 +1,6 @@
 <script lang="ts">
+	import colorPalette from "$lib/utils/colorPalette";
+
     interface LogoProps {
         width?: string;
         height?: string;
@@ -8,14 +10,11 @@
         className?: string;
     }
     
-    let defaultPrimaryColor = '#0C5DEB';
-    let defaultSecondaryColor = '#333333';
-
     let { 
         width,
         height,
-        primaryColor = defaultPrimaryColor,
-        secondaryColor = defaultSecondaryColor,
+        primaryColor = colorPalette.blue,
+        secondaryColor = colorPalette.darkGray,
         large = false,
         className
     }: LogoProps = $props();

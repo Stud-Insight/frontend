@@ -1,7 +1,7 @@
 <script lang="ts">
     import Spinner from "../ui/Spinner.svelte";
 
-    type ButtonType = 'default' | 'cas' | 'account-recovery';
+    type ButtonType = 'default' | 'cas' | 'account-recovery' | 'account-validation';
 
     interface SubmitButtonProps {
         type: ButtonType;
@@ -26,5 +26,9 @@
 {:else if type == 'account-recovery'}
     <button type="submit" class="py-2 px-4 bg-blue hover:bg-opacity-85 transition-all ease-in-out font-bold text-white rounded-lg drop-shadow-sm select-none">
         Envoyer un mail
+    </button>
+{:else if type == 'account-validation'}
+    <button type="submit" class="py-2 px-4 bg-blue hover:bg-opacity-85 transition-all ease-in-out font-bold text-white rounded-lg drop-shadow-sm select-none">
+        Valider
     </button>
 {/if}

@@ -2,6 +2,8 @@
     import Icon from '@iconify/svelte';
     import InputField from './InputField.svelte';
     import SubmitButton from './SubmitButton.svelte';
+    import InfoBubble from '../ui/InfoBubble.svelte';
+    import { text } from '@sveltejs/kit';
 
     let email = '';
 
@@ -12,14 +14,7 @@
 </script>
 
 <form on:submit|preventDefault={handleSubmit} class="flex flex-col justify-center space-y-8">
-    <div class="flex flex-row justify-center space-x-2 rounded-md bg-light-gray p-2">
-        <span class="text-gray mt-1">
-            <Icon icon="mdi:information" font-size={18} />
-        </span>
-        <p class="text-dark-gray">
-            Veuillez saisir votre adresse e-mail pour recevoir un lien de réinitialisation de votre mot de passe.
-        </p>
-    </div>
+    <InfoBubble text="Veuillez saisir votre adresse e-mail pour recevoir un lien de réinitialisation de votre mot de passe." />
     <div class="flex flex-col space-y-2">
         <InputField label="E-Mail" type="text" icon="ic:round-mail" iconSize={18} bind:value={email} />
         <a href="account-recovery" class="text-gray text-sm underline right-0 ml-auto">Pas reçu de mail ?</a>

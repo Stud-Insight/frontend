@@ -7,8 +7,8 @@ export default {
 	theme: {
 		extend: {
 			backgroundImage: {
-				'hero-pattern': "url('hero-pattern.svg')",
-				'cas-logo': "url('cas-logo.png')"
+				'hero-pattern': "url('/hero-pattern.svg')",
+				'cas-logo': "url('/cas-logo.png')"
 			}
 		},
 		colors: {

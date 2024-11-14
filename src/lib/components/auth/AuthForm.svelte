@@ -16,7 +16,7 @@
     <div class="mb-6 flex flex-col space-y-4">
         <InputField label="E-Mail" type="text" icon="ic:round-mail" iconSize={18} bind:value={email} />
         <InputField label="Mot de passe" type="password" icon="fa-solid:lock" iconSize={16} bind:value={password} />
-        <a href="account-recovery" class="text-gray text-sm underline right-0 ml-auto">Mot de passe oublié ?</a>
+        <a href="/auth/account-recovery" class="text-gray text-sm underline right-0 ml-auto">Mot de passe oublié ?</a>
     </div>
     
     <SubmitButton type="default" />

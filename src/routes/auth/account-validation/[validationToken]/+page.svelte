@@ -1,7 +1,5 @@
 <script>
-    import AccountValidationForm from "$lib/components/auth/AccountValidationForm.svelte";
+    import AccountValidationPage from "$lib/pages/auth/AccountValidationPage.svelte";
 </script>
 
-<div class="flex-1 w-[340px]">
-    <AccountValidationForm />
-</div>
+<AccountValidationPage />

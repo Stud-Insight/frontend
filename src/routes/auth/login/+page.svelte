@@ -1,8 +1,5 @@
 <script>
-	import AuthForm from "$lib/components/auth/AuthForm.svelte";
-    import Icon from "@iconify/svelte";
+	import LoginPage from "$lib/pages/auth/LoginPage.svelte";
 </script>
 
-<div class="">
-    <AuthForm />
-</div>
+<LoginPage />

@@ -1,9 +1,7 @@
 <script lang="ts">
-    import Icon from '@iconify/svelte';
-    import InputField from './InputField.svelte';
-    import SubmitButton from './SubmitButton.svelte';
-    import InfoBubble from '../ui/InfoBubble.svelte';
-    import { text } from '@sveltejs/kit';
+    import InputField from '../../components/forms/InputField.svelte';
+    import SubmitButton from '../../components/forms/SubmitButton.svelte';
+    import InfoBubble from '../../components/ui/InfoBubble.svelte';
 
     let email = '';
 

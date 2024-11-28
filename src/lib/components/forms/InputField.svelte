@@ -4,6 +4,7 @@
     import colorPalette from '$lib/utils/colorPalette';
 
     interface InputFieldProps {
+        id?: string;
         value: string;
         label?: string;
         type?: string;
@@ -14,6 +15,7 @@
     }
 
     let {
+        id = 'input-field-' + crypto.getRandomValues(new Uint32Array(1)),
         value = $bindable(),
         label,
         type = 'text',
@@ -23,7 +25,6 @@
         iconColor = 'inherit'
     }: InputFieldProps = $props();
     
-    let id = 'input-field-' + crypto.getRandomValues(new Uint32Array(1));
     let iconStyle: string = iconColor !== 'inherit' ? `color: ${iconColor};` : '';
     let showPassword: boolean = $state(false);
     let inputType = $derived(type === 'password' && showPassword ? 'text' : type);

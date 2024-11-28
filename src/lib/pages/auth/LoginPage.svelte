@@ -1,5 +1,6 @@
 <script lang="ts">
-    import { goto, invalidate, invalidateAll } from '$app/navigation';
+    import { goto, invalidateAll } from '$app/navigation';
+
 	import InputField from '../../components/forms/InputField.svelte';
     import SubmitButton from '../../components/forms/SubmitButton.svelte';
 
@@ -9,6 +10,7 @@
     const handleLogin = async () => {
         if (!email || !password) return;
 
+        console.log("envoie de la requête vers l'API (http://localhost:5173/api/auth/login)");
         const response = await fetch('http://localhost:5173/api/auth/login', {
             method: 'POST',
             headers: {
@@ -17,16 +19,14 @@
             body: JSON.stringify({ email, password })
         });
 
+        const result = await response.json();
+
         if (response.ok) {
-            const { accessToken, refreshToken } = await response.json();
-            console.log(accessToken);
-            console.log(refreshToken);
-            //localStorage.setItem('accessToken', accessToken);
-            //localStorage.setItem('refreshToken', refreshToken);
-            await invalidateAll();
+            // c'est ici que normalement je peux récupérer l'accessToken et éventuellement le stocker dans le local storage
+            // sauf que je n'ai pas envie de traiter les tokens ici, je veux le faire côté serveur de SvelteKit et ainsi éviter le local storage
             goto('/');
         } else {
-            console.error('Login failed.');
+            console.error('Login failed. ' + result.error);
         }
     };
 
@@ -34,8 +34,8 @@
 
 <form on:submit|preventDefault={handleLogin} class="flex flex-col space-y-4 justify-center">
     <div class="mb-6 flex flex-col space-y-4">
-        <InputField label="E-Mail" type="text" icon="ic:round-mail" iconSize={18} bind:value={email} />
-        <InputField label="Mot de passe" type="password" icon="fa-solid:lock" iconSize={16} bind:value={password} />
+        <InputField label="E-Mail" type="email" icon="ic:round-mail" iconSize={18} id="email" bind:value={email} />
+        <InputField label="Mot de passe" type="password" icon="fa-solid:lock" iconSize={16} id="password" bind:value={password} />
         <a href="/auth/account-recovery" class="text-gray text-sm underline right-0 ml-auto">Mot de passe oublié ?</a>
     </div>
     

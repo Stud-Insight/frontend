@@ -5,9 +5,9 @@ const MY_API_BASE_URL = 'http://localhost:8080';
 const PROXY_PATH = '/api';
 
 // This is a workaround for the lack of support for duplex requests in the RequestInit type
-interface ExtendedRequestInit extends RequestInit {
+/*interface ExtendedRequestInit extends RequestInit {
     duplex?: string;
-}
+}*/
 
 interface DecodedAccessToken {
     id: string;
@@ -17,6 +17,7 @@ interface DecodedAccessToken {
     roles: string[];
 }
 
+/*
 const proxyRequest = async (event: RequestEvent) => {
     const strippedPath = event.url.pathname.substring(PROXY_PATH.length);
     const proxiedUrl = new URL(`${MY_API_BASE_URL}${strippedPath}${event.url.search}`);
@@ -69,7 +70,7 @@ const handleProxy = async (event: RequestEvent) => {
         return await proxyRequest(event);
     }
     return null;
-};
+};*/
 
 const handleAuth = async (event: RequestEvent) => {
     const accessToken = event.cookies.get('accessToken');
@@ -88,6 +89,8 @@ const handleAuth = async (event: RequestEvent) => {
         } catch (err) {
             console.error('Failed to decode accessToken', err);
         }
+    } else {
+        event.locals.user = undefined;
     }
 };
 

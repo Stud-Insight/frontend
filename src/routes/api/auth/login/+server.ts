@@ -2,18 +2,14 @@ import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 
 export const POST: RequestHandler = async ({ request, cookies }) => {
-    console.log("détection d'une requête POST");
     try {
         const { email, password } = await request.json();
-        console.log("on analyse les données de la requête POST et on envoie à http://localhost:8080/auth/login");
 
         const response = await fetch('http://localhost:8080/auth/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, password })
         });
-
-        console.log(response);
 
         if (!response.ok) {
             return json(
@@ -22,15 +18,23 @@ export const POST: RequestHandler = async ({ request, cookies }) => {
             );
         }
 
-        const { accessToken } = await response.json();
-        console.log("accessToken: ", accessToken);
+        const { access, refresh } = await response.json();
+        console.log(access, refresh);
 
-        cookies.set('accessToken', accessToken, {
+        cookies.set('accessToken', access.token, {
             httpOnly: true,
             //secure: process.env.NODE_ENV === 'production',
             sameSite: 'strict',
             path: '/',
-            maxAge: 15 * 60 // 15 minutes
+            maxAge: access.maxAge
+        });
+
+        cookies.set('refreshToken', refresh.token, {
+            httpOnly: true,
+            //secure: process.env.NODE_ENV === 'production',
+            sameSite: 'strict',
+            path: '/',
+            maxAge: refresh.maxAge
         });
 
         return json({ success: true });

@@ -1,0 +1,33 @@
+import { json } from '@sveltejs/kit';
+
+export const POST = async ({ cookies }) => {
+    try {
+        const cookieHeader = cookies
+            .getAll()
+            .map(({ name, value }) => name === 'refreshToken' && `${name}=${value}`)
+            .join('; ');
+
+        const response = await fetch('http://localhost:8080/auth/logout', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Cookie': cookieHeader,
+            },
+        });
+
+        console.log('Response from backend:', response);
+
+        if (!response.ok) {
+            console.error('Backend logout failed:', response.statusText);
+            return json({ error: 'Failed to logout' }, { status: 500 });
+        }
+
+        cookies.delete('accessToken', { path: '/' });
+        cookies.delete('refreshToken', { path: '/' });
+
+        return json({ success: true });
+    } catch (err) {
+        console.error('Error during logout:', err);
+        return json({ error: 'An error occurred while logging out' }, { status: 500 });
+    }
+};

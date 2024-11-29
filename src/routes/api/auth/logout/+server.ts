@@ -2,6 +2,7 @@ import { json } from '@sveltejs/kit';
 
 export const POST = async ({ cookies }) => {
     try {
+        // Workaround to get the cookie header because credentials: 'include' doesn't work with SvelteKit
         const cookieHeader = cookies
             .getAll()
             .map(({ name, value }) => name === 'refreshToken' && `${name}=${value}`)
@@ -14,8 +15,6 @@ export const POST = async ({ cookies }) => {
                 'Cookie': cookieHeader,
             },
         });
-
-        console.log('Response from backend:', response);
 
         if (!response.ok) {
             console.error('Backend logout failed:', response.statusText);

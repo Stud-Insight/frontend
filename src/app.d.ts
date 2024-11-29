@@ -7,6 +7,5 @@ declare namespace App {
             email: string;
             roles: string[];
         }
-        refreshToken?: string;
     }
 }

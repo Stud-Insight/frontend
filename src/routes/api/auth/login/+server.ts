@@ -23,15 +23,15 @@ export const POST: RequestHandler = async ({ request, cookies }) => {
 
         cookies.set('accessToken', access.token, {
             httpOnly: true,
-            //secure: process.env.NODE_ENV === 'production',
+            secure: process.env.NODE_ENV === 'production',
             sameSite: 'strict',
             path: '/',
-            maxAge: access.maxAge
+            maxAge: refresh.maxAge // On fait en sorte que la durée de vie de l'accessToken soit la même que celle du refreshToken
         });
 
         cookies.set('refreshToken', refresh.token, {
             httpOnly: true,
-            //secure: process.env.NODE_ENV === 'production',
+            secure: process.env.NODE_ENV === 'production',
             sameSite: 'strict',
             path: '/',
             maxAge: refresh.maxAge

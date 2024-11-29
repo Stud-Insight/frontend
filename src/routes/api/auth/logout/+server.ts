@@ -2,7 +2,7 @@ import { json } from '@sveltejs/kit';
 
 export const POST = async ({ cookies }) => {
     try {
-        // Workaround to get the cookie header because credentials: 'include' doesn't work with SvelteKit
+        // Workaround to get the refreshToken cookie because credentials: 'include' doesn't work with SvelteKit
         const cookieHeader = cookies
             .getAll()
             .map(({ name, value }) => name === 'refreshToken' && `${name}=${value}`)

@@ -1,5 +1,6 @@
-import { type RequestEvent } from "@sveltejs/kit";
-import jwt from "jsonwebtoken";
+import { type RequestEvent } from '@sveltejs/kit';
+import { clearAuth } from '$lib/utils/authUtil';
+import jwt from 'jsonwebtoken';
 
 interface DecodedAccessToken extends jwt.JwtPayload {
     id: string;
@@ -10,8 +11,8 @@ interface DecodedAccessToken extends jwt.JwtPayload {
 }
 
 const handleAuth = async (event: RequestEvent) => {
-    const refreshToken = event.cookies.get("refreshToken");
-    let accessToken = event.cookies.get("accessToken");
+    const refreshToken = event.cookies.get('refreshToken');
+    let accessToken = event.cookies.get('accessToken');
 
     if (accessToken && refreshToken) {
         try {
@@ -19,39 +20,39 @@ const handleAuth = async (event: RequestEvent) => {
 
             const now = Math.floor(Date.now() / 1000);
             if (decoded.exp && decoded.exp < now) {
-                console.log("[🔐] accessToken expired, refreshing...");
+                console.log('[🔐] Access Token expired, refreshing...');
 
-                const refreshResponse = await fetch("http://localhost:8080/auth/refresh", {
-                    method: "POST",
+                const refreshResponse = await fetch('http://localhost:8080/auth/refresh', {
+                    method: 'POST',
                     headers: {
-                        Cookie: event.request.headers.get("cookie") || "",
+                        Cookie: event.request.headers.get('cookie') || ''
                     },
-                    credentials: "include",
+                    credentials: 'include'
                 });
 
                 if (!refreshResponse.ok) {
-                    console.error("[🔐] Refresh failed:", refreshResponse.statusText);
-                    event.locals.user = undefined;
+                    console.error('[🔐] Refresh failed. Clearing session.');
+                    clearAuth(event);
                     return;
                 }
 
                 const data = await refreshResponse.json();
-                const accessTokenMaxAge = data.access.maxAge;
-                accessToken = data.access.token;
+                const sessionMaxAge = data.sessionMaxAge;
+                accessToken = data.accesToken;
 
                 if (!accessToken) {
-                    console.error("[🔐] No accessToken received from backend when refreshing.");
-                    event.locals.user = undefined;
+                    console.error('[🔐] No Access Token received from backend when refreshing. Clearing session.');
+                    clearAuth(event);
                     return;
                 }
 
-                console.log("[🔐] New accessToken obtained:", accessToken);
+                console.log('[🔐] New accessToken obtained:', accessToken);
 
-                event.cookies.set("accessToken", accessToken, {
+                event.cookies.set('accessToken', accessToken, {
                     httpOnly: true,
-                    sameSite: "strict",
-                    path: "/",
-                    maxAge: accessTokenMaxAge * 2, // On double la durée de vie de l'accessToken pour qu'il puisse être rafraîchi
+                    sameSite: 'strict',
+                    path: '/',
+                    maxAge: sessionMaxAge
                 });
             }
 
@@ -61,16 +62,14 @@ const handleAuth = async (event: RequestEvent) => {
                 firstName: newDecoded?.firstName,
                 lastName: newDecoded?.lastName,
                 email: newDecoded?.email,
-                roles: newDecoded?.roles,
+                roles: newDecoded?.roles
             };
         } catch (err) {
-            console.error("[🔐] Failed to decode accessToken:", err);
-            event.locals.user = undefined;
+            console.error('[🔐] Failed to decode Access Token. Clearing session:', err);
+            clearAuth(event);
         }
     } else {
-        event.locals.user = undefined;
-        event.cookies.delete('accessToken', { path: '/' });
-        event.cookies.delete('refreshToken', { path: '/' });
+        clearAuth(event);
     }
 };
 

@@ -1,4 +1,5 @@
 import { goto } from '$app/navigation';
+import type { RequestEvent } from '@sveltejs/kit';
 
 export const logout = async () => {
     try {
@@ -14,4 +15,10 @@ export const logout = async () => {
     } catch (err) {
         console.error('Error during logout:', err);
     }
+};
+
+export const clearAuth = (event: RequestEvent) => {
+    event.locals.user = undefined;
+    event.cookies.delete('accessToken', { path: '/' });
+    event.cookies.delete('refreshToken', { path: '/' });
 };

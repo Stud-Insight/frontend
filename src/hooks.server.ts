@@ -1,5 +1,5 @@
 import { type RequestEvent } from '@sveltejs/kit';
-import { clearAuth } from '$lib/utils/authUtil';
+import { clearAuth } from '$utils/authUtil';
 import jwt from 'jsonwebtoken';
 
 interface DecodedAccessToken extends jwt.JwtPayload {
@@ -20,7 +20,7 @@ const handleAuth = async (event: RequestEvent) => {
 
             const now = Math.floor(Date.now() / 1000);
             if (decoded.exp && decoded.exp < now) {
-                console.log('[🔐] Access Token expired, refreshing...');
+                console.log(`[🔐] Access Token expired, refreshing...`);
 
                 const refreshResponse = await fetch('http://localhost:8080/auth/refresh', {
                     method: 'POST',
@@ -45,8 +45,6 @@ const handleAuth = async (event: RequestEvent) => {
                     clearAuth(event);
                     return;
                 }
-
-                console.log('[🔐] New accessToken obtained:', accessToken);
 
                 event.cookies.set('accessToken', accessToken, {
                     httpOnly: true,

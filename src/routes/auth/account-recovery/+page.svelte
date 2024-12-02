@@ -1,5 +1,5 @@
 <script>
-    import AccountRecoveryPage from "../../../lib/pages/auth/AccountRecoveryPage.svelte";
+    import AccountRecoveryPage from "$pages/auth/AccountRecoveryPage.svelte";
 </script>
 
 <AccountRecoveryPage />

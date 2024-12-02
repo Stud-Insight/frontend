@@ -12,10 +12,7 @@ export const POST: RequestHandler = async ({ request, cookies }) => {
         });
 
         if (!response.ok) {
-            return json(
-                { error: 'Invalid credentials' },
-                { status: response.status }
-            );
+            return new Response(response.body);
         }
 
         const { accessToken, refreshToken, sessionMaxAge } = await response.json();

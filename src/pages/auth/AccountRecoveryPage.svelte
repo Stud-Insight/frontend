@@ -1,7 +1,7 @@
 <script lang="ts">
-    import InputField from '../../components/forms/InputField.svelte';
-    import SubmitButton from '../../components/forms/SubmitButton.svelte';
-    import InfoBubble from '../../components/ui/InfoBubble.svelte';
+    import InputField from '$components/forms/InputField.svelte';
+    import SubmitButton from '$components/forms/SubmitButton.svelte';
+    import InfoBubble from '$components/ui/InfoBubble.svelte';
 
     let email = '';
 

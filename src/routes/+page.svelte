@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { logout } from '$lib/utils/authUtil';
+  import { logout } from '$utils/authUtil';
   import { page } from '$app/stores';
-  import type { User } from '$lib/types/User';
+  import type { User } from '$lib/interfaces/User';
 
   const user = $page.data.user as User;
 

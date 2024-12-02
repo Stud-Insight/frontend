@@ -1,5 +1,5 @@
 <script>
-    import AccountValidationPage from "$lib/pages/auth/AccountValidationPage.svelte";
+    import AccountValidationPage from "$pages/auth/AccountValidationPage.svelte";
 </script>
 
 <AccountValidationPage />

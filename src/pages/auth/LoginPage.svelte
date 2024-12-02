@@ -1,8 +1,8 @@
 <script lang="ts">
     import { goto, invalidateAll } from '$app/navigation';
 
-	import InputField from '../../components/forms/InputField.svelte';
-    import SubmitButton from '../../components/forms/SubmitButton.svelte';
+	import InputField from '$components/forms/InputField.svelte';
+    import SubmitButton from '$components/forms/SubmitButton.svelte';
 
     let email = '';
     let password = '';
@@ -10,7 +10,6 @@
     const handleLogin = async () => {
         if (!email || !password) return;
 
-        console.log("envoie de la requête vers l'API (http://localhost:5173/api/auth/login)");
         const response = await fetch('http://localhost:5173/api/auth/login', {
             method: 'POST',
             headers: {
@@ -20,13 +19,12 @@
         });
 
         const result = await response.json();
+        console.log(result);
 
         if (response.ok) {
-            // c'est ici que normalement je peux récupérer l'accessToken et éventuellement le stocker dans le local storage
-            // sauf que je n'ai pas envie de traiter les tokens ici, je veux le faire côté serveur de SvelteKit et ainsi éviter le local storage
             goto('/');
         } else {
-            console.error('Login failed. ' + result.error);
+            console.error('Login failed. ' + result);
         }
     };
 

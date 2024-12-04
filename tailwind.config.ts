@@ -19,7 +19,11 @@ export default {
 			'cyan': colorPalette.cyan,
 			'dark-gray': colorPalette.darkGray,
 			'gray': colorPalette.gray,
-			'light-gray': colorPalette.lightGray
+			'light-gray': colorPalette.lightGray,
+			'red': colorPalette.red,
+			'green': colorPalette.green,
+			'yellow': colorPalette.yellow,
+			'orange': colorPalette.orange,
 		}
 	},
 

@@ -2,6 +2,7 @@
     import { createEventDispatcher } from 'svelte';
     import Icon from '@iconify/svelte';
     import colorPalette from '$lib/utils/colorPalette';
+    import type { error } from '@sveltejs/kit';
 
     interface InputFieldProps {
         id?: string;
@@ -12,6 +13,7 @@
         icon?: string;
         iconSize?: number;
         iconColor?: string;
+        fieldError?: boolean;
     }
 
     let {
@@ -22,7 +24,8 @@
         placeholder,
         icon,
         iconSize = 20,
-        iconColor = 'inherit'
+        iconColor = 'inherit',
+        fieldError = false
     }: InputFieldProps = $props();
     
     let iconStyle: string = iconColor !== 'inherit' ? `color: ${iconColor};` : '';
@@ -30,7 +33,7 @@
     let inputType = $derived(type === 'password' && showPassword ? 'text' : type);
 </script>
 
-<div class="text-gray">
+<div class="{fieldError ? 'text-red' : 'text-gray'}">
     {#if label}
         <label class="text-smp mb-1 flex flex-row items-center space-x-2 font-bold" for={id}>
             {#if icon}
@@ -45,7 +48,7 @@
     <div class="relative w-full">
         <input
             bind:value
-            class="bg-light-gray text-dark-gray w-full appearance-none rounded px-3 py-2 leading-tight shadow drop-shadow-sm focus:outline-none placeholder:italic placeholder:text-gray"
+            class="bg-light-gray text-dark-gray w-full appearance-none {!!fieldError && 'border-red border-2'} rounded px-3 py-2 leading-tight shadow drop-shadow-sm focus:outline-none placeholder:italic placeholder:text-gray"
             id={id}
             type={inputType}
             {placeholder}

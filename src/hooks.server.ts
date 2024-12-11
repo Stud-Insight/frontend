@@ -2,22 +2,30 @@ import { type RequestEvent } from '@sveltejs/kit';
 import { clearAuth } from '$utils/authUtil';
 import jwt from 'jsonwebtoken';
 
+interface RolesAccessToken {
+    _id: string,
+    name: string,
+    permissions: string[],
+}
+
 interface DecodedAccessToken extends jwt.JwtPayload {
     id: string;
     firstName: string;
     lastName: string;
     email: string;
-    roles: string[];
+    roles: any;
 }
+
 
 const handleAuth = async (event: RequestEvent) => {
     const refreshToken = event.cookies.get('refreshToken');
     let accessToken = event.cookies.get('accessToken');
 
     if (accessToken && refreshToken) {
+        
         try {
             const decoded = jwt.decode(accessToken) as DecodedAccessToken;
-
+            
             const now = Math.floor(Date.now() / 1000);
             if (decoded.exp && decoded.exp < now) {
                 console.log(`[🔐] Access Token expired, refreshing...`);
@@ -55,13 +63,15 @@ const handleAuth = async (event: RequestEvent) => {
             }
 
             const newDecoded = jwt.decode(accessToken) as DecodedAccessToken;
+            
             event.locals.user = {
                 id: newDecoded?.id,
                 firstName: newDecoded?.firstName,
                 lastName: newDecoded?.lastName,
                 email: newDecoded?.email,
-                roles: newDecoded?.roles
+                roles: newDecoded?.roles,// un JSON.parse faisait une erreur ("SyntaxError: "[object Object]" is not valid JSON at JSON.parse (<anonymous>)")
             };
+            console.log(event.locals.user)
         } catch (err) {
             console.error('[🔐] Failed to decode Access Token. Clearing session:', err);
             clearAuth(event);

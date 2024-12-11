@@ -1,7 +1,7 @@
 <script lang="ts">
     import Icon from "@iconify/svelte";
 
-    type ButtonType = 'default' | 'cas' | 'account-recovery' | 'account-validation';
+    type ButtonType = 'default' | 'cas' | 'account-recovery' | 'account-validation' | 'create-user';
 
     interface SubmitButtonProps {
         type: ButtonType;
@@ -34,4 +34,8 @@
     <button type="submit" class="py-2 px-4 bg-blue hover:bg-opacity-85 transition-all ease-in-out font-bold text-white rounded-lg drop-shadow-sm select-none">
         Valider
     </button>
+{:else if type == 'create-user'}
+<button type="submit" class="py-2 px-4 bg-blue hover:bg-opacity-85 transition-all ease-in-out font-bold text-white rounded-lg drop-shadow-sm select-none">
+    créer un utilisateur
+</button>
 {/if}

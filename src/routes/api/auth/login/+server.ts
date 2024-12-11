@@ -1,11 +1,14 @@
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
+import { env } from '$env/dynamic/private'
+
 
 export const POST: RequestHandler = async ({ request, cookies }) => {
+    let response;
     try {
         const { email, password } = await request.json();
 
-        const response = await fetch('http://localhost:8080/auth/login', {
+        response = await fetch(env.API_ENDPOINT + '/auth/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, password })
@@ -34,11 +37,11 @@ export const POST: RequestHandler = async ({ request, cookies }) => {
         });
 
         return json({ success: true });
-    } catch (error) {
+    } catch (error: any) {
         console.error(error);
         return json(
-            { error: 'An error occurred while logging in' },
-            { status: 500 }
+            { error: 'An error occurred while logging in', stack: error.stack, api: env, response: response },
+            { status: 500 },
         );
     }
 };

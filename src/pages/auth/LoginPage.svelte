@@ -16,7 +16,8 @@
         if (!email || !password) return;
 
         isLoading = true;
-        const response = await fetch('http://localhost:5173/api/auth/login', {
+        console.log(window.location.origin + '/api/auth/login');
+        const response = await fetch(window.location.origin + '/api/auth/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

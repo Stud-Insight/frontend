@@ -9,7 +9,7 @@ export const POST = async ({ cookies }) => {
             .map(({ name, value }) => name === 'refreshToken' && `${name}=${value}`)
             .join('; ');
 
-        const response = await fetch(env.API_ENDPOINT + '/auth/logout', {
+        const response = await fetch(`${env.API_ENDPOINT}/auth/logout`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

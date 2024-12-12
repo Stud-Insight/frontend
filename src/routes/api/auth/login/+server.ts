@@ -8,7 +8,7 @@ export const POST: RequestHandler = async ({ request, cookies }) => {
     try {
         const { email, password } = await request.json();
 
-        response = await fetch(env.API_ENDPOINT + '/auth/login', {
+        response = await fetch(`${env.API_ENDPOINT}/auth/login`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, password })

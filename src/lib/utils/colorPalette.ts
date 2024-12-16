@@ -1,5 +1,5 @@
 export default {
-    deepBlue: '26266e',
+    deepBlue: '#26266e',
 	blue: '#0c5deb',
     cyan: '#00e1ff',
 	darkGray: '#333333',

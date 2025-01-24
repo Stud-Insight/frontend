@@ -2,7 +2,7 @@ import { redirect } from '@sveltejs/kit';
 
 export const load = async ({ locals }) => {
     console.log("eled")
-    if (!locals.user || !(locals.user?.roles.map((role) => role.name).includes("ADMIN"))) {
+    if (!locals.user) {
         throw redirect(302, '/');
     }
     

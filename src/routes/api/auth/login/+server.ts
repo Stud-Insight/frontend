@@ -5,7 +5,7 @@ export const POST: RequestHandler = async ({ request, cookies }) => {
     try {
         const { email, password } = await request.json();
 
-        const response = await fetch('http://localhost:8080/auth/login', {
+        const response = await fetch('http://localhost:9000/auth/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, password })

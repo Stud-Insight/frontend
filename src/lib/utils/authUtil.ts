@@ -1,4 +1,5 @@
 import { goto } from '$app/navigation';
+import type { User } from '$lib/interfaces/User';
 import type { RequestEvent } from '@sveltejs/kit';
 
 export const logout = async () => {
@@ -22,3 +23,7 @@ export const clearAuth = (event: RequestEvent) => {
     event.cookies.delete('accessToken', { path: '/' });
     event.cookies.delete('refreshToken', { path: '/' });
 };
+
+export const isAdmin = (user: User) => {
+    return user?.roles.some((role) => role.name === 'ADMIN');
+}

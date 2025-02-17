@@ -16,25 +16,27 @@ import Sidenav from '$components/ui/nav/Sidenav.svelte';
     <Sidenav {user} />
 
     <!-- Dashboard Container -->
-    <div class="w-full h-full p-12">
+    <div class="flex flex-col space-y-8 w-full h-full p-12">
 
         <!-- Welcome Banner -->
         <div class="flex justify-between items-center w-full h-48 px-16 bg-gradient-to-r from-[#2196f3] to-blue rounded-xl">
             <div class="text-white">
                 <h1 class="text-3xl font-bold mb-4">Bonjour, {user.firstName}.</h1>
                 <p class="text-lg">Bienvenue sur votre tableau de bord où vous pouvez consulter vos différentes expériences.</p>
-                <p class="text-lg flex items-center">Vous avez 0 <span><Icon icon="line-md:bell-filled" font-size="20" /></span> nouvelles notifications.</p>
+                <p class="text-lg flex items-center">Vous avez 0 <span><Icon icon="line-md:bell-loop" font-size="20" /></span> nouvelles notifications.</p>
                 <p></p>
             </div>
             <WorkIllustration width={200} />
         </div>
 
-        <!-- Gestion/Affichage des TERs -->
-        <div>
-        <div>
+        <div class="flex flex-row space-x-8 w-full h-full">
+            <!-- Gestion/Affichage des TERs -->
+            <div class="h-full w-full bg-light-gray rounded-xl">
+            </div>
 
-        <!-- Gestion/Affichage des TERs -->
-        </div>
+            <!-- Gestion/Affichage des TERs -->
+            <div class="h-full w-full bg-light-gray rounded-xl">
+            </div>
 
         </div>
 

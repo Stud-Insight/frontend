@@ -1,8 +1,8 @@
 <script lang="ts">
     import type { User } from "$lib/interfaces/User";
-    
     import { logout, isAdmin } from "$utils/authUtil";
     import Logo from "../Logo.svelte";
+
     import SidenavAccount from "./SidenavAccount.svelte";
     import SidenavDivider from "./SidenavDivider.svelte";
     import SidenavElement from "./SidenavElement.svelte";
@@ -14,6 +14,7 @@
     }
 
     let { user }: SidenavProps = $props();
+
     const links = [
         { icon: 'ic:round-dashboard', fontSize: 26, name: 'Accueil', href: '/' },
         { icon: 'fa6-solid:building-user', fontSize: 23, name: 'Stages', href: '/stages' },
@@ -24,6 +25,7 @@
         { icon: 'fa6-solid:box-archive', fontSize: 23, name: 'Archives', href: '/archives' },
         { icon: 'fa6-solid:gear', fontSize: 23, name: 'Paramètres', href: '/settings' }
     ];
+
     let userAvatar = "https://c.clc2l.com/t/A/m/Among-Us-oAEaxX.png";
     let userName = user?.firstName || "John Doe";
     let userEmail = user?.email || "john.doe@example.com";
@@ -44,7 +46,7 @@
 
 <div class="flex flex-col items-center h-full w-[20%] border-light-gray border-r-[1px]">
 
-    <div class="my-8">
+    <div class="my-8 mx-2">
         <Logo className="h-14 max-h-16 w-auto" large />
     </div>
 

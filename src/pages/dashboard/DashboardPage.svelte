@@ -1,6 +1,8 @@
 <script lang="ts">
-    import Sidenav from '$components/ui/nav/Sidenav.svelte';
+    import WorkIllustration from '$components/svg/WorkIllustration.svelte';
+import Sidenav from '$components/ui/nav/Sidenav.svelte';
     import type { User } from '$lib/interfaces/User';
+    import Icon from '@iconify/svelte';
 
     interface DashboardPageProps {
         user: User;
@@ -9,6 +11,33 @@
     let { user }: DashboardPageProps = $props();
 </script>
 
-<div class="h-screen">
+<div class="h-screen flex flex-row">
+    
     <Sidenav {user} />
+
+    <!-- Dashboard Container -->
+    <div class="w-full h-full p-12">
+
+        <!-- Welcome Banner -->
+        <div class="flex justify-between items-center w-full h-48 px-16 bg-gradient-to-r from-[#2196f3] to-blue rounded-xl">
+            <div class="text-white">
+                <h1 class="text-3xl font-bold mb-4">Bonjour, {user.firstName}.</h1>
+                <p class="text-lg">Bienvenue sur votre tableau de bord où vous pouvez consulter vos différentes expériences.</p>
+                <p class="text-lg flex items-center">Vous avez 0 <span><Icon icon="line-md:bell-filled" font-size="20" /></span> nouvelles notifications.</p>
+                <p></p>
+            </div>
+            <WorkIllustration width={200} />
+        </div>
+
+        <!-- Gestion/Affichage des TERs -->
+        <div>
+        <div>
+
+        <!-- Gestion/Affichage des TERs -->
+        </div>
+
+        </div>
+
+    </div>
+
 </div>

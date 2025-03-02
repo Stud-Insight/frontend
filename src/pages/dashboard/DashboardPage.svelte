@@ -16,7 +16,7 @@ import Sidenav from '$components/ui/nav/Sidenav.svelte';
     <Sidenav {user} />
 
     <!-- Dashboard Container -->
-    <div class="flex flex-col space-y-8 w-full h-full p-12">
+    <div class="flex flex-col space-y-6 w-full h-full p-12">
 
         <!-- Welcome Banner -->
         <div class="flex justify-between items-center w-full h-48 px-16 bg-gradient-to-r from-[#2196f3] to-blue rounded-xl">
@@ -29,7 +29,7 @@ import Sidenav from '$components/ui/nav/Sidenav.svelte';
             <WorkIllustration width={200} />
         </div>
 
-        <div class="flex flex-row space-x-8 w-full h-full">
+        <div class="flex flex-row space-x-6 w-full h-full">
             <!-- Gestion/Affichage des TERs -->
             <div class="h-full w-full bg-light-gray rounded-xl">
             </div>

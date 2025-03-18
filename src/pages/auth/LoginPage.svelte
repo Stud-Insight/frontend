@@ -1,14 +1,13 @@
 <script lang="ts">
-    import { goto, invalidateAll } from '$app/navigation';
-    import { resolveRoute } from '$app/paths';
+    import { goto } from '$app/navigation';
     import Alert from '$components/alert/Alert.svelte';
 
 	import InputField from '$components/forms/InputField.svelte';
     import SubmitButton from '$components/forms/SubmitButton.svelte';
 
     let email = $state('');
-    let password = $state('');
     let error = $state('');
+    let password = $state('');
     let isLoading = $state(false);
 
     const handleLogin = async (event: SubmitEvent) => {
@@ -16,7 +15,7 @@
         if (!email || !password) return;
 
         isLoading = true;
-        const response = await fetch('http://localhost:5173/api/auth/login', {
+        const response = await fetch(window.location.origin + '/api/auth/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

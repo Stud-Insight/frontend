@@ -1,19 +1,16 @@
 <script lang="ts">
-    import { goto, invalidateAll } from '$app/navigation';
-    import { resolveRoute } from '$app/paths';
-    import Alert from '$components/alert/Alert.svelte';
-
 	import InputField from '$components/forms/InputField.svelte';
     import SubmitButton from '$components/forms/SubmitButton.svelte';
-    let H = ''
+
     let email = $state('');
     let firstName = $state('');
     let lastName = $state('');
+
     const handleCreateUser = async (event: SubmitEvent) => {
         event.preventDefault();
         if (!email || !firstName || !lastName) return;
 
-        const response = await fetch('http://localhost:5173/api/account/create-user', {
+        const response = await fetch(`${window.location.origin}/api/account`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -21,13 +18,11 @@
             body: JSON.stringify({ email, firstName, lastName })
             
         });
-        console.log('bled')
-        console.log(response.body);
         
         const result = await response.json();
     }
     
-    let error = 'invalid'
+    let error = '';
 </script>
 
 

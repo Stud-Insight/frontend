@@ -35,7 +35,6 @@ import Sidenav from '$components/ui/nav/Sidenav.svelte';
         <div class="flex flex-row space-x-8 w-full h-full">
             <!-- Gestion/Affichage des TERs -->
             <div class="h-full w-full bg-light-gray rounded-xl">
-                <Depot title="Premier depot" closingDate={date} extension="PDF" description={description}/>
             </div>
 
             <!-- Gestion/Affichage des TERs -->

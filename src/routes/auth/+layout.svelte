@@ -14,7 +14,7 @@
             <div class="flex w-full mb-12 justify-center items-center">
                 <Logo className="h-28 px-12" large />
             </div>
-
+            
             <div class="w-[60%] py-10">
                 {@render children()}
             </div>

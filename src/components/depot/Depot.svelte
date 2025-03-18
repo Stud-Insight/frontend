@@ -39,7 +39,6 @@
     const today = new Date();
     let timeLeft = closingDate? (closingDate.getTime() - today.getTime()) / (1000 * 60 * 60) : 0;
     
-    console.log("Input :", files);
 </script>
 
 <div class="grid w-full min-w-[25vw] max-w-[40vw] items-center gap-1.5">

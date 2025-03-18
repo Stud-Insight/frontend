@@ -1,8 +1,9 @@
 import { fontFamily } from "tailwindcss/defaultTheme";
 import type { Config } from "tailwindcss";
 import tailwindcssAnimate from "tailwindcss-animate";
+import colorPalette from './src/lib/utils/colorPalette';
 
-const config: Config = {
+export default {
 	darkMode: ["class"],
 	content: ["./src/**/*.{html,js,svelte,ts}"],
 	safelist: ["dark"],
@@ -15,7 +16,25 @@ const config: Config = {
 			}
 		},
 		extend: {
+			backgroundImage: {
+				'hero-pattern': "url('/hero-pattern.svg')",
+				'work-illustration': "url('/work-illustration.svg')",
+				'cas-logo': "url('/cas-logo.png')",
+			},
 			colors: {
+				'white': '#ffffff',
+				'black': '#000000',
+				'deep-blue': colorPalette.deepBlue,
+				'blue': colorPalette.blue,
+				'cyan': colorPalette.cyan,
+				'dark-gray': colorPalette.darkGray,
+				'gray': colorPalette.gray,
+				'light-gray': colorPalette.lightGray,
+				'red': colorPalette.red,
+				'green': colorPalette.green,
+				'yellow': colorPalette.yellow,
+				'orange': colorPalette.orange,
+
 				border: "hsl(var(--border) / <alpha-value>)",
 				input: "hsl(var(--input) / <alpha-value>)",
 				ring: "hsl(var(--ring) / <alpha-value>)",
@@ -59,6 +78,7 @@ const config: Config = {
 					border: "hsl(var(--sidebar-border))",
 					ring: "hsl(var(--sidebar-ring))",
         		},
+				
 			},
 			borderRadius: {
 				xl: "calc(var(--radius) + 4px)",
@@ -91,6 +111,4 @@ const config: Config = {
 		},
 	},
 	plugins: [tailwindcssAnimate],
-};
-
-export default config;
+} satisfies Config;

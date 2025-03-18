@@ -3,12 +3,15 @@
 import Sidenav from '$components/ui/nav/Sidenav.svelte';
     import type { User } from '$lib/interfaces/User';
     import Icon from '@iconify/svelte';
+    import Depot from '$components/depot/Depot.svelte';
 
     interface DashboardPageProps {
         user: User;
     }
 
     let { user }: DashboardPageProps = $props();
+    let date: Date = new Date('2025-03-25');
+    let description = "Ceci est un premier jet pour un dépôt. Un super dépôt !";
 </script>
 
 <div class="h-screen flex flex-row">
@@ -32,6 +35,7 @@ import Sidenav from '$components/ui/nav/Sidenav.svelte';
         <div class="flex flex-row space-x-8 w-full h-full">
             <!-- Gestion/Affichage des TERs -->
             <div class="h-full w-full bg-light-gray rounded-xl">
+                <Depot title="Premier depot" closingDate={date} extension="PDF" description={description}/>
             </div>
 
             <!-- Gestion/Affichage des TERs -->

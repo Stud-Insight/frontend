@@ -3,7 +3,10 @@ import type { Config } from 'tailwindcss';
 import defaultTheme from 'tailwindcss/defaultTheme';
 
 export default {
-	content: ['./src/**/*.{html,js,svelte,ts}'],
+	content: [
+		'./src/**/*.{html,js,svelte,ts}',
+		'./node_modules/flowbite-svelte/**/*.{html,js,svelte,ts}'
+	],
 
 	theme: {
 		extend: {
@@ -28,5 +31,5 @@ export default {
 		}
 	},
 
-	plugins: []
+	plugins: [require('flowbite/plugin')]
 } satisfies Config;

@@ -1,14 +1,18 @@
 <script lang="ts">
     import WorkIllustration from '$components/svg/WorkIllustration.svelte';
-import Sidenav from '$components/ui/nav/Sidenav.svelte';
+    import Sidenav from '$components/ui/nav/Sidenav.svelte';
     import type { User } from '$lib/interfaces/User';
+    import CreateUserPage from '$pages/admin/CreateUserPage.svelte';
     import Icon from '@iconify/svelte';
+    import { Button, Modal} from 'flowbite-svelte';
 
     interface DashboardPageProps {
         user: User;
     }
 
     let { user }: DashboardPageProps = $props();
+    let createUserModal = $state(false);
+
 </script>
 
 <div class="h-screen flex flex-row">
@@ -31,13 +35,16 @@ import Sidenav from '$components/ui/nav/Sidenav.svelte';
 
         <div class="flex flex-row space-x-6 w-full h-full">
             <!-- Gestion/Affichage des TERs -->
-            <div class="h-full w-full bg-light-gray rounded-xl">
+            <div class="h-full w-full bg-light-gray rounded-xl content-center">
             </div>
 
             <!-- Gestion/Affichage des TERs -->
             <div class="h-full w-full bg-light-gray rounded-xl">
+                <Button class="bg-cyan" onclick={() => (createUserModal = true)}>Créer un utilisateur</Button>
+                <Modal bind:open={createUserModal} size="xs" autoclose={false} outsideclose class="w-full">
+                    <CreateUserPage/>
+                </Modal>
             </div>
-
         </div>
 
     </div>

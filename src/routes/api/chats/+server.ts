@@ -4,7 +4,7 @@
 //export const POST: RequestHandler = async ({ request, cookies }) => {
 //        const { email, firstName, lastName } = await request.json();
 //        console.log('cled')
-//        const response = await fetch('http://localhost:8080/account/create-user', {
+//        const response = await fetch('http://localhost:8080/chats/get-chat', {
 //          method: 'POST',
 //            headers: { 'Content-Type': 'application/json' },
 //            body: JSON.stringify({ email, firstName, lastName })

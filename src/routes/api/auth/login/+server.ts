@@ -1,11 +1,10 @@
-import { json } from '@sveltejs/kit';
-import type { RequestHandler } from './$types';
+import { json, type RequestHandler } from '@sveltejs/kit';
 
 export const POST: RequestHandler = async ({ request, cookies }) => {
     try {
         const { email, password } = await request.json();
 
-        const response = await fetch('http://localhost:9000/auth/login', {
+        const response = await fetch('http://localhost:8081/auth/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, password })

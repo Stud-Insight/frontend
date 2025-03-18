@@ -34,16 +34,13 @@
         <div class="h-full w-full bg-light-gray rounded-xl content-center">
         </div>
 
-            <!-- Gestion/Affichage des TERs -->
-            <div class="h-full w-full bg-light-gray rounded-xl">
-                <Button class="bg-cyan" onclick={() => (createUserModal = true)}>Créer un utilisateur</Button>
-                <Modal bind:open={createUserModal} size="xs" autoclose={false} outsideclose class="w-full">
-                    <CreateUserPage/>
-                </Modal>
-            </div>
-
+        <!-- Gestion/Affichage des TERs -->
+        <div class="h-full w-full bg-light-gray rounded-xl">
+            <Button class="bg-cyan" onclick={() => (createUserModal = true)}>Créer un utilisateur</Button>
+            <Modal bind:open={createUserModal} size="xs" autoclose={false} outsideclose class="w-full">
+                <CreateUserPage/>
+            </Modal>
         </div>
-
     </div>
 
 </div>

@@ -10,5 +10,7 @@
 
 <div class="h-screen flex flex-row">
     <Sidenav {user} />
-	{@render children()}
+    <div class="flex flex-col w-full h-full">
+	    {@render children()}
+    </div>
 </div>

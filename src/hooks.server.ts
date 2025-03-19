@@ -70,9 +70,8 @@ const handleAuth = async (event: RequestEvent) => {
                 firstName: newDecoded?.firstName,
                 lastName: newDecoded?.lastName,
                 email: newDecoded?.email,
-                roles: newDecoded?.roles,// un JSON.parse faisait une erreur ("SyntaxError: "[object Object]" is not valid JSON at JSON.parse (<anonymous>)")
+                roles: newDecoded?.roles, // un JSON.parse faisait une erreur ("SyntaxError: "[object Object]" is not valid JSON at JSON.parse (<anonymous>)")
             };
-            console.log(event.locals.user)
         } catch (err) {
             console.error('[🔐] Failed to decode Access Token. Clearing session:', err);
             clearAuth(event);

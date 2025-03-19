@@ -16,16 +16,17 @@
     let { user }: SidenavProps = $props();
 
     const links = [
-        { icon: 'ic:round-dashboard', fontSize: 26, name: 'Accueil', href: '/' },
+        { icon: 'ic:round-dashboard', fontSize: 26, name: 'Accueil', href: '/dashboard' },
         { icon: 'fa6-solid:building-user', fontSize: 23, name: 'Stages', href: '/stages' },
         { icon: 'fa6-solid:microscope', fontSize: 26, name: 'TERs', href: '/ters' }
     ];
     const adminLinks = [
-        { icon: 'fa6-solid:users', fontSize: 23, name: 'Utilisateurs', href: '/users' },
-        { icon: 'fa6-solid:box-archive', fontSize: 23, name: 'Archives', href: '/archives' },
-        { icon: 'fa6-solid:gear', fontSize: 23, name: 'Paramètres', href: '/settings' }
+        { icon: 'fa6-solid:users', fontSize: 23, name: 'Utilisateurs', href: '/admin/users' },
+        { icon: 'fa6-solid:box-archive', fontSize: 23, name: 'Archives', href: '/admin/archives' },
+        { icon: 'fa6-solid:gear', fontSize: 23, name: 'Paramètres', href: '/admin/settings' }
     ];
 
+    // Temporary variables
     let userAvatar = "https://c.clc2l.com/t/A/m/Among-Us-oAEaxX.png";
     let userName = user?.firstName || "John Doe";
     let userEmail = user?.email || "john.doe@example.com";

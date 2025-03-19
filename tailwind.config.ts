@@ -5,7 +5,10 @@ import defaultTheme from 'tailwindcss/defaultTheme';
 
 const config: Config = {
 	darkMode: ["class"],
-	content: ["./src/**/*.{html,js,svelte,ts}"],
+	content: [
+		'./src/**/*.{html,js,svelte,ts}',
+		'./node_modules/flowbite-svelte/**/*.{html,js,svelte,ts}'
+	],
 	safelist: ["dark"],
 	theme: {
 		container: {
@@ -77,6 +80,7 @@ const config: Config = {
 			}
 		}
 	},
-};
+	//plugins: [require('flowbite/plugin')]
+} satisfies Config;
 
 export default config;

@@ -1,10 +1,7 @@
 <script lang="ts">
     import WorkIllustration from '$components/svg/WorkIllustration.svelte';
-    import Sidenav from '$components/ui/nav/Sidenav.svelte';
     import type { User } from '$lib/interfaces/User';
-    import CreateUserPage from '$pages/admin/CreateUserPage.svelte';
     import Icon from '@iconify/svelte';
-    import { Button, Modal} from 'flowbite-svelte';
 
     interface DashboardPageProps {
         user: User;
@@ -36,10 +33,12 @@
 
         <!-- Gestion/Affichage des TERs -->
         <div class="h-full w-full bg-light-gray rounded-xl">
+            <!-- TODO: Faire le modal avec shadcn/ui
             <Button class="bg-cyan" onclick={() => (createUserModal = true)}>Créer un utilisateur</Button>
             <Modal bind:open={createUserModal} size="xs" autoclose={false} outsideclose class="w-full">
                 <CreateUserPage/>
             </Modal>
+            -->
         </div>
     </div>
 

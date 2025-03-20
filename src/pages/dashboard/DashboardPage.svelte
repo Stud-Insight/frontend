@@ -3,7 +3,6 @@
 import Sidenav from '$components/ui/nav/Sidenav.svelte';
     import type { User } from '$lib/interfaces/User';
     import Icon from '@iconify/svelte';
-    import Depot from '$components/depot/Depot.svelte';
 
     interface DashboardPageProps {
         user: User;

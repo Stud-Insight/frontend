@@ -13,6 +13,9 @@ const config = {
 			$utils: 'src/lib/utils',
 		}
 	},
+	/* optimizeDeps: {
+		exclude: ['SuperDebug']
+	}, */
 };
 
 export default config;

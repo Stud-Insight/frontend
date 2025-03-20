@@ -20,13 +20,15 @@ export const columns: ColumnDef<User>[] = [
                 indeterminate:
                     table.getIsSomePageRowsSelected() && !table.getIsAllPageRowsSelected(),
                 onCheckedChange: (value) => table.toggleAllPageRowsSelected(!!value),
-                'aria-label': 'Select all'
+                'aria-label': 'Select all',
+                class: "data-[state=checked]:bg-blue"
             }),
         cell: ({ row }) =>
             renderComponent(Checkbox, {
                 checked: row.getIsSelected(),
                 onCheckedChange: (value) => row.toggleSelected(!!value),
-                'aria-label': 'Select row'
+                'aria-label': 'Select row',
+                class: "data-[state=checked]:bg-blue"
             }),
         enableSorting: false,
         enableHiding: false

@@ -5,7 +5,6 @@
     } from '$lib/components/ui/data-table/index.js';
     import * as Table from '$lib/components/ui/table/index.js';
     import { Button } from '$lib/components/ui/button/index.js';
-    import { Input } from '$lib/components/ui/input/index.js';
     import { getCoreRowModel, getFilteredRowModel, getPaginationRowModel, getSortedRowModel, type ColumnFiltersState, type PaginationState, type RowSelectionState, type SortingState, type VisibilityState } from '@tanstack/table-core';
     import { columns, type User } from './usersColumns';
 
@@ -98,9 +97,6 @@
 </script>
 
 <div class="w-full">
-    <!-- Champ de filtre (optionnel) -->
-    <Input placeholder="Filtrer..." class="mb-4 max-w-sm" />
-
     <div class="rounded-md border">
         <Table.Root>
             <Table.Header>

@@ -10,19 +10,25 @@
 
     const data: User[] = [
         {
-            id: '1',
-            lastName: 'Dupont',
-            firstName: 'Jean',
-            birthDate: '1980-05-12',
-            email: 'jean.dupont@example.com'
+            "id": "67d9448f2491968b25a562e1",
+            "name": "admin",
+            "email": "admin@example.com",
+            "activationDate": "2025-03-18T10:01:51.542Z",
+            "lastLogin": "2025-03-20T09:26:46.011Z",
+            "roles": [
+                "67d9431020b3adf8fdac99f2"
+            ]
         },
         {
-            id: '2',
-            lastName: 'Martin',
-            firstName: 'Claire',
-            birthDate: '1990-11-30',
-            email: 'claire.martin@example.com'
-        }
+            "id": "67d9448f2491968b25a562e1",
+            "name": "Martin Patrick",
+            "email": "martin.patrick@example.com",
+            "activationDate": "2024-02-18T10:01:51.542Z",
+            "lastLogin": "2024-03-12T09:26:46.011Z",
+            "roles": [
+                "67d9431020b3adf8fdac99f2"
+            ]
+        },
     ];
 
     let pagination = $state<PaginationState>({ pageIndex: 0, pageSize: 10 });

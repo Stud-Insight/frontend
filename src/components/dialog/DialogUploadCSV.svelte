@@ -2,11 +2,10 @@
     import { buttonVariants } from '$lib/components/ui/button';
     import * as Dialog from '$lib/components/ui/dialog';
     import Icon from '@iconify/svelte';
-
 </script>
 
 <Dialog.Root>
-    <Dialog.Trigger class={`${buttonVariants({ variant: 'default' })} bg-lime-400 hover:bg-lime-400 hover:bg-opacity-90`}>
+    <Dialog.Trigger class={`bg-lime-500 hover:bg-lime-500 hover:bg-opacity-90 text-white hover:text-white ${buttonVariants({ variant: 'default' })}`}>
         <Icon icon="fa6-solid:file-csv" width="512" height="512" />
         <span>Importer un CSV</span>
     </Dialog.Trigger>

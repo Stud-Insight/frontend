@@ -2,14 +2,21 @@ import { Checkbox } from "$lib/components/ui/checkbox";
 import { renderComponent } from "$lib/components/ui/data-table";
 import type { ColumnDef } from "@tanstack/table-core";
 import UsersActionCell from './UsersActionCell.svelte';
+import { Row } from "$lib/components/ui/table";
+
+function formatDate(isoDate: string): string {
+    const date = new Date(isoDate);
+    return new Intl.DateTimeFormat('fr-FR', { day: '2-digit', month: 'long', year: 'numeric' }).format(date);
+}
 
 export type User = {
     id: string;
-    lastName: string;
-    firstName: string;
-    birthDate: string;
+    name: string;
     email: string;
-};
+    activationDate: string;
+    lastLogin: string;
+    roles: string[];
+}
 
 export const columns: ColumnDef<User>[] = [
     {
@@ -34,21 +41,23 @@ export const columns: ColumnDef<User>[] = [
         enableHiding: false
     },
     {
-        accessorKey: 'lastName',
+        accessorKey: 'name',
         header: 'Nom'
-    },
-    {
-        accessorKey: 'firstName',
-        header: 'Prénom'
-    },
-    {
-        accessorKey: 'birthDate',
-        header: 'Date de naissance'
     },
     {
         accessorKey: 'email',
         header: 'E-mail',
         cell: ({ row }) => row.getValue('email')
+    },
+    {
+        accessorKey: 'activationDate',
+        header: 'Date d\'activation',
+        cell: ({ row }) => formatDate(row.getValue('activationDate'))
+    },
+    {
+        accessorKey: 'lastLogin',
+        header: 'Dernière connexion',
+        cell: ({ row }) => formatDate(row.getValue('lastLogin'))
     },
     {
         id: 'actions',

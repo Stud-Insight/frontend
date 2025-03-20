@@ -1,8 +1,8 @@
 <script>
+    import DialogCreateNewUser from "$components/dialog/DialogCreateNewUser.svelte";
     import DialogUploadCSV from "$components/dialog/DialogUploadCSV.svelte";
     import UsersDataTable from "$components/tables/UsersDataTable.svelte";
     import Button from "$lib/components/ui/button/button.svelte";
-    import { renderComponent } from "$lib/components/ui/data-table";
     import Icon from "@iconify/svelte";
 </script>
 
@@ -11,10 +11,7 @@
         <h1 class="font-bold text-xl">Utilisateurs</h1>
         <div class="">
             <DialogUploadCSV />
-            <Button class="bg-blue hover:bg-opacity-90">
-                <Icon icon="cuida:user-add-outline" width="24" height="24" />
-                <span>Ajouter un utilisateur</span>
-            </Button>
+            <DialogCreateNewUser />
         </div>
     </div>
     <UsersDataTable />

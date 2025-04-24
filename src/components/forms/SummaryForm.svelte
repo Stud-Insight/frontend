@@ -52,6 +52,7 @@
                     {/snippet}
                 </Form.Control>
                 <Form.Description>Titre du sujet (maximum 100 caractère)</Form.Description>
+                <Form.FieldErrors />
             </Form.Field>
             <Form.Field {form} name="supervisor">
                 <Form.Control>
@@ -61,6 +62,7 @@
                     {/snippet}
                 </Form.Control>
                 <Form.Description>Nom de l'encadrant</Form.Description>
+                <Form.FieldErrors />
             </Form.Field>
             <Form.Field {form} name="email">
                 <Form.Control>
@@ -70,6 +72,7 @@
                     {/snippet}
                 </Form.Control>
                 <Form.Description>Email de l'encadrant</Form.Description>
+                <Form.FieldErrors />
             </Form.Field>
             <Form.Field {form} name="content">
                 <Form.Control>
@@ -79,6 +82,7 @@
                     {/snippet}
                 </Form.Control>
                 <Form.Description>Description du sujet (entre 50 et 5000 caractères)</Form.Description>
+                <Form.FieldErrors />
             </Form.Field>
             <Form.Button>Enregistrer</Form.Button>
         </form>

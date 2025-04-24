@@ -1,6 +1,6 @@
 <script lang="ts">
     import WorkIllustration from '$components/svg/WorkIllustration.svelte';
-import Sidenav from '$components/ui/nav/Sidenav.svelte';
+    import Sidenav from '$components/ui/nav/Sidenav.svelte';
     import type { User } from '$lib/interfaces/User';
     import Icon from '@iconify/svelte';
 

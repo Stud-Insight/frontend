@@ -1,9 +1,10 @@
 <script lang="ts">
 	// import ChoiceForm from '$components/forms/ChoiceForm.svelte';
 	// import SummaryForm from '$components/forms/SummaryForm.svelte';
-	// import CreateUser from '$components/forms/CreateUser.svelte';
+	import CreateUser from '$components/forms/CreateUser.svelte';
 
 	import CrashTest from '$components/forms/CrashTest.svelte';
+	import Save from '$components/forms/SaveSuppr.svelte';
 
 	import type { PageData } from "./$types.js";
 	export let dataTest: PageData;
@@ -21,5 +22,6 @@
 	<!-- <SummaryForm data={dataTest} /> -->
 	<!-- <ChoiceForm data={dataTest} /> -->
 	<!-- <CreateUser data={dataTest} /> -->
-	 <CrashTest data={dataTest} />
+	<!-- <CrashTest data={dataTest} /> -->
+	 <Save data={dataTest} />
 <h3>Fin de la démo</h3>

@@ -1,12 +1,26 @@
 <script lang="ts" context="module">
     import { z } from "zod";
+
+    const regexName = /^(?:[A-ZÀ-Ý][a-zà-ÿ]+(?:-[A-ZÀ-Ý][a-zà-ÿ]+)?\s?)+$/;
     export const summaryFormSchema = z.object({
         title: z.string().min(2).max(100),      // titre
-        supervisor : z.string().max(100),       // nom du superviseur
+        supervisor: z.string()
+            .min(2).max(100)
+            .regex(regexName, "Entrée invalide"),
         email: z.string().email(),              // email du superviseur
         content: z.string().min(50).max(5000)   // description
     });
     export type SummaryFormSchema = typeof summaryFormSchema;
+
+    export function formatName(value: string): string {
+        return value
+            .split(/\s+/)
+            .map(word => word
+                    .split('-')
+                    .map(part => part.charAt(0).toUpperCase() + part.slice(1).toLowerCase())
+                    .join('-'))
+            .join(' ');
+    }
 </script>
 
 <script lang="ts">
@@ -14,10 +28,10 @@
         type Infer, 
         type SuperValidated,
         superForm } from "sveltekit-superforms";
-	import SuperDebug from "sveltekit-superforms";
-	import { browser } from "$app/environment";
+    import SuperDebug from "sveltekit-superforms";
+    import { browser } from "$app/environment";
 
-	import { zodClient } from "sveltekit-superforms/adapters";
+    import { zodClient } from "sveltekit-superforms/adapters";
     import * as Card from "$lib/components/ui/card/index.js";
     import * as Form from "$lib/components/ui/form/index.js";
     import { Textarea } from "$lib/components/ui/textarea/index.js";
@@ -26,13 +40,28 @@
     import { Content } from "$lib/components/ui/popover";
     import { Field } from "formsnap";
 
-    export let data: SuperValidated<Infer<SummaryFormSchema>>;
+    export let data: SuperValidated<Infer<SummaryFormSchema>> = {
+        id: '',
+        valid: false,
+        posted: false,
+        errors: {},
+        data: {
+            title: '',
+            supervisor: '',
+            email: '',
+            content: ''
+        }
+    };
 
     const form = superForm(data, {
         validators: zodClient(summaryFormSchema),
     });
 
     const { form: formData, enhance } = form;
+
+    $: if ($formData.supervisor !== undefined) {
+        $formData.supervisor = formatName($formData.supervisor);
+    }
 </script>
 
 <div class="grid min-w-[25vw] max-w-[50vw] items-center gap-1.5" >
@@ -94,7 +123,3 @@
         </Card.Footer> -->
     </Card.Root>
 </div>
-
-<!-- 
-            <Form.FieldErrors {form} name="email" class="text-red-500" />
-             -->

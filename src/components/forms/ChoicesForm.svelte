@@ -22,7 +22,7 @@
 
     let openStates = $state(statuses.map(() => false));
     let values = $state(statuses.map(() => ""));
-    let errors = $state<string[]>([]); // Un tableau pour stocker les différents messages d'erreur
+    let error = $state("");
 
     function closeAndFocusTrigger(triggerId: string, index: number) {
         openStates[index] = false;
@@ -30,30 +30,18 @@
             document.getElementById(triggerId)?.focus();
         });
     }
-
+    
     function validateChoice() {
-        errors = []; // Réinitialiser les erreurs à chaque validation
-        const selectedValues = new Map<string, number>(); // Map pour suivre la fréquence de chaque sujet
-        const chosenValues = values.filter(v => v !== ""); // Filtrer les valeurs choisies
-
-        // Vérifier les doublons
-        for (const val of chosenValues) {
-            selectedValues.set(val, (selectedValues.get(val) || 0) + 1);
-        }
-        for (const [value, count] of selectedValues.entries()) {
-            if (count > 1) {
-                const label = statuses.find(s => s.value === value)?.label || value;
-                errors.push(`Le sujet "${label}" a été sélectionné plusieurs fois.`);
+        const selectedValues = new Set();
+        for (const val of values) {
+            if (val && selectedValues.has(val)) {
+                error = "Certains sujets ont été sélectionnés plusieurs fois !";
+                return;
             }
+            selectedValues.add(val);
         }
-
-        // Vérifier si tous les sujets ont été choisis (si c'est une exigence)
-        if (chosenValues.length < statuses.length) {
-            errors.push("Tous les sujets n'ont pas été sélectionnés.");
-            // Optionnellement, vous pourriez lister les sujets manquants ici si nécessaire.
-        }
+        error = ""; // Réinitialiser l'erreur si tout est correct
     }
-
     const triggerIds = statuses.map(() => useId());
 </script>
 
@@ -109,17 +97,13 @@
             {/each}
         </Card.Content>
         <Card.Footer>
-            {#if errors.length > 0}
-                <div style="color:red;">
-                    <p>Attention !</p>
-                    <ul>
-                        {#each errors as error}
-                            <li>{error}</li>
-                        {/each}
-                    </ul>
-                </div>
+            <!-- {#if browser}
+                <SuperDebug data={{values}} />
+            {/if} -->
+            {#if error}
+                <p style="color:red;">Attention ! {error}</p>
             {:else}
-                <Button >Valider les choix</Button>
+                <Button>Valider les choix</Button>
             {/if}
         </Card.Footer>
     </Card.Root>

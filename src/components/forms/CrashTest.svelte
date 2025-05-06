@@ -95,7 +95,6 @@
     }
 </script>
 
-<div>Coucou c'est un formulaire CreateUser</div>
 <div class="grid min-w-[25vw] max-w-[50vw] items-center gap-1.5" >
     <Card.Root style="background-color: #f4f4f5;">
         <Card.Header>

@@ -1,3 +1,8 @@
+/**
+ * Ce fichier contient des fonctions utilitaires liées à l'authentification.
+ * Il comprend des fonctions pour la déconnexion, la suppression des jetons d'authentification,
+ * et la vérification des rôles utilisateurs.
+ */
 import { goto } from '$app/navigation';
 import type { User } from '$lib/interfaces/User';
 import type { RequestEvent } from '@sveltejs/kit';

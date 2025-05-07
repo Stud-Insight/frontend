@@ -2,8 +2,6 @@
     import DialogCreateNewUser from "$components/dialog/DialogCreateNewUser.svelte";
     import DialogUploadCSV from "$components/dialog/DialogUploadCSV.svelte";
     import UsersDataTable from "$components/tables/UsersDataTable.svelte";
-    import Button from "$lib/components/ui/button/button.svelte";
-    import Icon from "@iconify/svelte";
 </script>
 
 <div class="flex flex-col space-y-4 p-16">

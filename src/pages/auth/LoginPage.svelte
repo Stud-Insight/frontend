@@ -38,7 +38,6 @@
             isLoading = false;
         }
     };
-
 </script>
 
 {#if error}

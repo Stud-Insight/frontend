@@ -9,7 +9,6 @@
 
     let { user }: DashboardPageProps = $props();
     let createUserModal = $state(false);
-
 </script>
 
 <!-- Dashboard Container -->

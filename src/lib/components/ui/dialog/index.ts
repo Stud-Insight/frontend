@@ -1,7 +1,10 @@
 import { Dialog as DialogPrimitive } from "bits-ui";
 
 import Title from "./dialog-title.svelte";
+<<<<<<< HEAD
 import Portal from "./dialog-portal.svelte";
+=======
+>>>>>>> 18ac060678c5dcec50bcfbcb5c0ec1533fe4ff06
 import Footer from "./dialog-footer.svelte";
 import Header from "./dialog-header.svelte";
 import Overlay from "./dialog-overlay.svelte";
@@ -11,6 +14,10 @@ import Description from "./dialog-description.svelte";
 const Root = DialogPrimitive.Root;
 const Trigger = DialogPrimitive.Trigger;
 const Close = DialogPrimitive.Close;
+<<<<<<< HEAD
+=======
+const Portal = DialogPrimitive.Portal;
+>>>>>>> 18ac060678c5dcec50bcfbcb5c0ec1533fe4ff06
 
 export {
 	Root,

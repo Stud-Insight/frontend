@@ -14,6 +14,9 @@ const config = {
 			"@/*": "./path/to/lib/*",
 		}
 	},
+	/* optimizeDeps: {
+		exclude: ['SuperDebug']
+	}, */
 };
 
 export default config;

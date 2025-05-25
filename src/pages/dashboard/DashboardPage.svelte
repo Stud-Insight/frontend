@@ -3,12 +3,7 @@
     import Sidenav from '$components/ui/nav/Sidenav.svelte';
     import type { User } from '$lib/interfaces/User';
     import Icon from '@iconify/svelte';
-    import {Button, buttonVariants} from "$lib/components/ui/button/index.js";
-    import { Input } from "$lib/components/ui/input/index.js";
-    import { Label } from "$lib/components/ui/label/index.js";
     import Depot from '$components/depot/Depot.svelte';
-    import * as Dialog from "$lib/components/ui/dialog";
-    import CreateUserPage from '$pages/admin/CreateUserPage.svelte';
 
     interface DashboardPageProps {
         user: User;

@@ -40,6 +40,8 @@
 	},
 	"dependencies": {
 		"dotenv": "^16.4.5",
-		"jsonwebtoken": "^9.0.2"
+		"jsonwebtoken": "^9.0.2",
+		"pdf-lib": "^1.17.1",
+		"pdfjs-dist": "^5.1.91"
 	}
 }

@@ -1,9 +1,14 @@
 <script lang="ts">
     import WorkIllustration from '$components/svg/WorkIllustration.svelte';
-import Sidenav from '$components/ui/nav/Sidenav.svelte';
+    import Sidenav from '$components/ui/nav/Sidenav.svelte';
     import type { User } from '$lib/interfaces/User';
     import Icon from '@iconify/svelte';
+    import {Button, buttonVariants} from "$lib/components/ui/button/index.js";
+    import { Input } from "$lib/components/ui/input/index.js";
+    import { Label } from "$lib/components/ui/label/index.js";
     import Depot from '$components/depot/Depot.svelte';
+    import * as Dialog from "$lib/components/ui/dialog";
+    import CreateUserPage from '$pages/admin/CreateUserPage.svelte';
 
     interface DashboardPageProps {
         user: User;
@@ -35,6 +40,20 @@ import Sidenav from '$components/ui/nav/Sidenav.svelte';
         <div class="flex flex-row space-x-8 w-full h-full">
             <!-- Gestion/Affichage des TERs -->
             <div class="h-full w-full bg-light-gray rounded-xl">
+                <!-- <Dialog.Root>
+                    <Dialog.Trigger class={buttonVariants({ variant: "outline" })}>
+                        Créer un utilisateur
+                    </Dialog.Trigger>
+
+                    <Dialog.Content class="sm:max-w-[425px]">
+                      <Dialog.Header>
+                        <Dialog.Title class="text-center">Créer un utilisateur</Dialog.Title>
+                      </Dialog.Header>
+
+                      <CreateUserPage/>
+
+                    </Dialog.Content>
+                </Dialog.Root> -->
             </div>
 
             <!-- Gestion/Affichage des TERs -->

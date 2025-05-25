@@ -11,6 +11,7 @@ const config = {
 			$components: 'src/components',
 			$pages: 'src/pages',
 			$utils: 'src/lib/utils',
+			"@/*": "./path/to/lib/*",
 		}
 	},
 };
